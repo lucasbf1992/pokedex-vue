@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="">
-          <img :src="currentImg" alt="Placeholder image">
+          <img :src="currentImg" alt="Pokemon">
         </figure>
       </div>
       <div class="card-content">

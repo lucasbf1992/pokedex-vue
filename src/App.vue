@@ -47,7 +47,7 @@ export default {
         return;
       }
 
-      this.filterPokemons = this.pokemons.filter(pokemon => pokemon.name == this.query);
+      this.filterPokemons = this.pokemons.filter(pokemon => pokemon.name.toLowerCase() == this.query.toLowerCase());
     }
   }
 }
