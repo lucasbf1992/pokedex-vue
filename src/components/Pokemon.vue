@@ -63,6 +63,7 @@ export default {
         this.isFront = false;
       }else{
         this.currentImg = this.pokemon.front;
+        this.isFront = true;
       }
     }
   }
