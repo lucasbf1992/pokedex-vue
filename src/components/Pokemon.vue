@@ -9,7 +9,7 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-4">{{number}} - {{name | upper}}</p>
+            <p class="title is-4">{{name | upper}}</p>
             <p class="subtitle is-6">{{ this.pokemon.type }}</p>
           </div>
         </div>
@@ -60,6 +60,7 @@ export default {
     changeSprite: function() {
       if (this.isFront) {
         this.currentImg = this.pokemon.back;
+        this.isFront = false;
       }else{
         this.currentImg = this.pokemon.front;
       }

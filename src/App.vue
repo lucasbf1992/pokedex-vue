@@ -3,7 +3,11 @@
     <div class="column is-half is-offset-one-quarter">
       <hr>
       <p class="is-size-4">POKEDEX</p>
-      <div v-for="(poke, index) in pokemons" :key="index">
+
+      <input class="input is-rounded" type="text" placeholder="Buscar pokemon pelo nome" v-model="query">
+      <button class="button is-fullwidth is-success" id="btnSearch" @click="search">Buscar</button>
+
+      <div v-for="(poke, index) in filterPokemons" :key="poke.name">
         <pokemon
             :name="poke.name"
             :url="poke.url"
@@ -23,16 +27,29 @@ export default {
     axios.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
         .then(res => {
           this.pokemons = res.data.results;
+          this.filterPokemons = res.data.results;
         });
   },
   data() {
     return {
-      pokemons: []
+      pokemons: [],
+      filterPokemons: [],
+      query: '',
     }
   },
   components: {
     pokemon
   },
+  methods: {
+    search: function() {
+      if (this.query == '' ||  this.query == '') {
+        this.filterPokemons = this.pokemons
+        return;
+      }
+
+      this.filterPokemons = this.pokemons.filter(pokemon => pokemon.name == this.query);
+    }
+  }
 }
 </script>
 
@@ -44,5 +61,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#btnSearch {
+  margin-top: 2%;
 }
 </style>
